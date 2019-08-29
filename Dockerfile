@@ -1,6 +1,6 @@
 # kaggle/julia dockerfile
 
-FROM julia:1.1.0
+FROM julia:1.2.0
 
 ADD package_installs.jl /tmp/package_installs.jl
 ADD test_build.jl /tmp/test_build.jl
@@ -23,7 +23,7 @@ RUN pip3 install jupyter && \
   julia -e "using Pkg;Pkg.add(\"IJulia\")" && \
   # Make sure Jupyter won't try to migrate old settings
   mkdir -p /root/.jupyter/kernels && \
-  cp -r /root/.local/share/jupyter/kernels/julia-1.1 /root/.jupyter/kernels && \
+  cp -r /root/.local/share/jupyter/kernels/julia-1.2 /root/.jupyter/kernels && \
   touch /root/.jupyter/jupyter_nbconvert_config.py && touch /root/.jupyter/migrated
 
 # TensorFlow
